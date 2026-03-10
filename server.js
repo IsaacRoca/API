@@ -7,17 +7,14 @@ const server = http.createServer((req, res) => {
     const { method, url } = req;
     res.setHeader("Content-Type", "application/json; charset=utf-8");
 
-    // Rota de teste
     if (url === "/" && method === "GET") {
         res.end(JSON.stringify({ mensagem: "API da Biblioteca Rodando!" }));
     }
 
-    // Listar Livros
     else if (url === "/livros" && method === "GET") {
         res.end(JSON.stringify(livrosModulo.listarLivros()));
     }
 
-    // Cadastrar Livro
     else if (url === "/livros" && method === "POST") {
         let body = "";
         req.on("data", chunk => { body += chunk; });
